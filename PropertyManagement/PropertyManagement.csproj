@@ -194,12 +194,32 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ProblemsController.cs" />
+    <Compile Include="Controllers\PropertiesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Problem.cs">
+      <DependentUpon>Problems.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Problems.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Problems.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Problems.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Problems.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Problems.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Problems.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Models\Properties.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -232,6 +252,16 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Models\Problems.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Problems.edmx</DependentUpon>
+      <LastGenOutput>Problems.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Problems.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Problems.edmx</DependentUpon>
+      <LastGenOutput>Problems.cs</LastGenOutput>
+    </Content>
     <Content Include="Models\Properties.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Properties.edmx</DependentUpon>
@@ -253,6 +283,13 @@
     </EntityDeploy>
     <Content Include="Models\Properties.edmx.diagram">
       <DependentUpon>Properties.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="Models\Problems.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Problems.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Problems.edmx.diagram">
+      <DependentUpon>Problems.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -299,6 +336,10 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Properties\Index.cshtml" />
+    <Content Include="Views\Properties\Details.cshtml" />
+    <Content Include="Views\Problems\Index.cshtml" />
+    <Content Include="Views\Problems\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -316,6 +357,7 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
