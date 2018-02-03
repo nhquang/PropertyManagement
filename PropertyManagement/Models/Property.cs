@@ -14,11 +14,20 @@ namespace PropertyManagement.Models
     
     public partial class Property
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Property()
+        {
+            this.Problems = new HashSet<Problem>();
+        }
+    
         public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public System.DateTime Date { get; set; }
         public int Price { get; set; }
         public Nullable<System.DateTime> Expiration { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Problem> Problems { get; set; }
     }
 }

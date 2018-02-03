@@ -26,9 +26,7 @@
         <th>
             @Html.DisplayNameFor(model => model.FixingPrice)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PropID)
-        </th>
+        
         <th></th>
     </tr>
 
@@ -48,9 +46,6 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.FixingPrice)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PropID)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |

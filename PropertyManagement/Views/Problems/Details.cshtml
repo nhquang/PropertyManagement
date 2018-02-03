@@ -31,7 +31,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.FixingDate)
+            @Html.DisplayFor(model => model.FixingDate.Month)/@Html.DisplayFor(model => model.FixingDate.Day)/@Html.DisplayFor(model => model.FixingDate.Year)
         </dd>
 
         <dt>
@@ -39,7 +39,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ReusingDate)
+            @Html.DisplayFor(model => model.ReusingDate.Month)/@Html.DisplayFor(model => model.ReusingDate.Day)/@Html.DisplayFor(model => model.ReusingDate.Year)
         </dd>
 
         <dt>
@@ -51,11 +51,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.PropID)
+            @Html.DisplayNameFor(model => model.Property.Name)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.PropID)
+            @Html.DisplayFor(model => model.Property.Name)
         </dd>
 
     </dl>

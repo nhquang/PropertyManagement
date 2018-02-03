@@ -21,5 +21,7 @@ namespace PropertyManagement.Models
         public System.DateTime ReusingDate { get; set; }
         public int FixingPrice { get; set; }
         public int PropID { get; set; }
+    
+        public virtual Property Property { get; set; }
     }
 }

@@ -3,23 +3,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Data.Entity;
 using PropertyManagement.Models;
 
 namespace PropertyManagement.Controllers
 {
     public class ProblemsController : Controller
     {
-        ProbsDBEntities probs = new ProbsDBEntities();
+        PropertyManagementDB o = new PropertyManagementDB();
+        
         // GET: Problems
         public ActionResult Index()
         {
-            return View(probs.Problems.ToList());
+            return View(o.Problems.ToList());
         }
 
         // GET: Problems/Details/5
         public ActionResult Details(int id)
         {
-            return View(probs.Problems.Find(id));
+            return View(o.Problems.Include(c => c.Property).SingleOrDefault(t => t.Id == id));
         }
 
         // GET: Problems/Create

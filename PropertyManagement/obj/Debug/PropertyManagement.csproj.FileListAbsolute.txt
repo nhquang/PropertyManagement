@@ -65,7 +65,6 @@ F:\Git Repos\PropertyManagement\PropertyManagement\bin\Microsoft.AI.DependencyCo
 F:\Git Repos\PropertyManagement\PropertyManagement\bin\Microsoft.AI.ServerTelemetryChannel.xml
 F:\Git Repos\PropertyManagement\PropertyManagement\bin\Microsoft.AI.WindowsServer.xml
 F:\Git Repos\PropertyManagement\PropertyManagement\bin\Microsoft.AI.Web.xml
-F:\Git Repos\PropertyManagement\PropertyManagement\obj\Debug\PropertyManagement.csprojResolveAssemblyReference.cache
 F:\Git Repos\PropertyManagement\PropertyManagement\obj\Debug\PropertyManagement.csproj.CoreCompileInputs.cache
 F:\Git Repos\PropertyManagement\PropertyManagement\obj\Debug\PropertyManagement.dll
 F:\Git Repos\PropertyManagement\PropertyManagement\obj\Debug\PropertyManagement.pdb

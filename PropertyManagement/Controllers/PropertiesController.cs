@@ -9,17 +9,17 @@ namespace PropertyManagement.Controllers
 {
     public class PropertiesController : Controller
     {
-        PropsDBEntities props = new PropsDBEntities();
+        PropertyManagementDB o = new PropertyManagementDB();
         // GET: Properties
         public ActionResult Index()
         {
-            return View(props.Properties.ToList());
+            return View(o.Properties.ToList());
         }
 
         // GET: Properties/Details/5
         public ActionResult Details(int id)
         {
-            return View(props.Properties.Find(id));
+            return View(o.Properties.Find(id));
         }
 
         // GET: Properties/Create
