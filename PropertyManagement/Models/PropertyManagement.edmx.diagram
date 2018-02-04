@@ -4,10 +4,10 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="ac4eef2b320e4601946db4b063df32b3" Name="Diagram1">
-        <EntityTypeShape EntityType="PropsDBModel.Problem" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="PropsDBModel.Property" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
-        <AssociationConnector Association="PropsDBModel.FK_Prop_ToProperties" ManuallyRouted="false" />
+      <Diagram DiagramId="fce6976d09f847709a6954e2e3775971" Name="Diagram1">
+        <EntityTypeShape EntityType="PropManagementDBModel.Problem" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="PropManagementDBModel.Property" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="PropManagementDBModel.FK_Prop_ToProb" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

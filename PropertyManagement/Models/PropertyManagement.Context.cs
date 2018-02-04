@@ -13,10 +13,10 @@ namespace PropertyManagement.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class PropertyManagementDB : DbContext
+    public partial class PropManagementDBEntities : DbContext
     {
-        public PropertyManagementDB()
-            : base("name=PropertyManagementDB")
+        public PropManagementDBEntities()
+            : base("name=PropManagementDBEntities")
         {
         }
     

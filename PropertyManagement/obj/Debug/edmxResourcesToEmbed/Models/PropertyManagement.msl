@@ -1,28 +1,28 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="PropsDBModelStoreContainer" CdmEntityContainer="PropertyManagementDB">
+  <EntityContainerMapping StorageEntityContainer="PropManagementDBModelStoreContainer" CdmEntityContainer="PropManagementDBEntities">
     <EntitySetMapping Name="Problems">
-      <EntityTypeMapping TypeName="PropsDBModel.Problem">
-        <MappingFragment StoreEntitySet="Problems">
+      <EntityTypeMapping TypeName="PropManagementDBModel.Problem">
+        <MappingFragment StoreEntitySet="Problem">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="FixingPrice" ColumnName="FixingPrice" />
           <ScalarProperty Name="FixingDate" ColumnName="FixingDate" />
           <ScalarProperty Name="ReusingDate" ColumnName="ReusingDate" />
-          <ScalarProperty Name="FixingPrice" ColumnName="FixingPrice" />
           <ScalarProperty Name="PropID" ColumnName="PropID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Properties">
-      <EntityTypeMapping TypeName="PropsDBModel.Property">
-        <MappingFragment StoreEntitySet="Properties">
+      <EntityTypeMapping TypeName="PropManagementDBModel.Property">
+        <MappingFragment StoreEntitySet="Property">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Description" ColumnName="Description" />
-          <ScalarProperty Name="Date" ColumnName="Date" />
           <ScalarProperty Name="Price" ColumnName="Price" />
-          <ScalarProperty Name="Expiration" ColumnName="Expiration" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="ExpirationDate" ColumnName="ExpirationDate" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

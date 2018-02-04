@@ -4,98 +4,98 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="PropsDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="Problems">
+      <Schema Namespace="PropManagementDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Problem">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nchar" MaxLength="20" Nullable="false" />
           <Property Name="Description" Type="text" />
+          <Property Name="FixingPrice" Type="int" Nullable="false" />
           <Property Name="FixingDate" Type="date" Nullable="false" />
           <Property Name="ReusingDate" Type="date" Nullable="false" />
-          <Property Name="FixingPrice" Type="int" Nullable="false" />
           <Property Name="PropID" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="Properties">
+        <EntityType Name="Property">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="Name" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="20" Nullable="false" />
           <Property Name="Description" Type="text" />
-          <Property Name="Date" Type="date" Nullable="false" />
           <Property Name="Price" Type="int" Nullable="false" />
-          <Property Name="Expiration" Type="date" />
+          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="ExpirationDate" Type="date" />
         </EntityType>
-        <Association Name="FK_Prop_ToProperties">
-          <End Role="Properties" Type="Self.Properties" Multiplicity="1" />
-          <End Role="Problems" Type="Self.Problems" Multiplicity="*" />
+        <Association Name="FK_Prop_ToProb">
+          <End Role="Property" Type="Self.Property" Multiplicity="1" />
+          <End Role="Problem" Type="Self.Problem" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Properties">
+            <Principal Role="Property">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="Problems">
+            <Dependent Role="Problem">
               <PropertyRef Name="PropID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="PropsDBModelStoreContainer">
-          <EntitySet Name="Problems" EntityType="Self.Problems" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Properties" EntityType="Self.Properties" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_Prop_ToProperties" Association="Self.FK_Prop_ToProperties">
-            <End Role="Properties" EntitySet="Properties" />
-            <End Role="Problems" EntitySet="Problems" />
+        <EntityContainer Name="PropManagementDBModelStoreContainer">
+          <EntitySet Name="Problem" EntityType="Self.Problem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Property" EntityType="Self.Property" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Prop_ToProb" Association="Self.FK_Prop_ToProb">
+            <End Role="Property" EntitySet="Property" />
+            <End Role="Problem" EntitySet="Problem" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="PropsDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="PropManagementDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Problem">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FixingPrice" Type="Int32" Nullable="false" />
           <Property Name="FixingDate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="ReusingDate" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="FixingPrice" Type="Int32" Nullable="false" />
           <Property Name="PropID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Property" Relationship="Self.FK_Prop_ToProperties" FromRole="Problems" ToRole="Properties" />
+          <NavigationProperty Name="Property" Relationship="Self.FK_Prop_ToProb" FromRole="Problem" ToRole="Property" />
         </EntityType>
         <EntityType Name="Property">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Price" Type="Int32" Nullable="false" />
-          <Property Name="Expiration" Type="DateTime" Precision="0" />
-          <NavigationProperty Name="Problems" Relationship="Self.FK_Prop_ToProperties" FromRole="Properties" ToRole="Problems" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ExpirationDate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Problems" Relationship="Self.FK_Prop_ToProb" FromRole="Property" ToRole="Problem" />
         </EntityType>
-        <Association Name="FK_Prop_ToProperties">
-          <End Role="Properties" Type="Self.Property" Multiplicity="1" />
-          <End Role="Problems" Type="Self.Problem" Multiplicity="*" />
+        <Association Name="FK_Prop_ToProb">
+          <End Role="Property" Type="Self.Property" Multiplicity="1" />
+          <End Role="Problem" Type="Self.Problem" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Properties">
+            <Principal Role="Property">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="Problems">
+            <Dependent Role="Problem">
               <PropertyRef Name="PropID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="PropertyManagementDB" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="PropManagementDBEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Problems" EntityType="Self.Problem" />
           <EntitySet Name="Properties" EntityType="Self.Property" />
-          <AssociationSet Name="FK_Prop_ToProperties" Association="Self.FK_Prop_ToProperties">
-            <End Role="Properties" EntitySet="Properties" />
-            <End Role="Problems" EntitySet="Problems" />
+          <AssociationSet Name="FK_Prop_ToProb" Association="Self.FK_Prop_ToProb">
+            <End Role="Property" EntitySet="Properties" />
+            <End Role="Problem" EntitySet="Problems" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -103,29 +103,29 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="PropsDBModelStoreContainer" CdmEntityContainer="PropertyManagementDB">
+        <EntityContainerMapping StorageEntityContainer="PropManagementDBModelStoreContainer" CdmEntityContainer="PropManagementDBEntities">
           <EntitySetMapping Name="Problems">
-            <EntityTypeMapping TypeName="PropsDBModel.Problem">
-              <MappingFragment StoreEntitySet="Problems">
+            <EntityTypeMapping TypeName="PropManagementDBModel.Problem">
+              <MappingFragment StoreEntitySet="Problem">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="FixingPrice" ColumnName="FixingPrice" />
                 <ScalarProperty Name="FixingDate" ColumnName="FixingDate" />
                 <ScalarProperty Name="ReusingDate" ColumnName="ReusingDate" />
-                <ScalarProperty Name="FixingPrice" ColumnName="FixingPrice" />
                 <ScalarProperty Name="PropID" ColumnName="PropID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Properties">
-            <EntityTypeMapping TypeName="PropsDBModel.Property">
-              <MappingFragment StoreEntitySet="Properties">
+            <EntityTypeMapping TypeName="PropManagementDBModel.Property">
+              <MappingFragment StoreEntitySet="Property">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="Expiration" ColumnName="Expiration" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="ExpirationDate" ColumnName="ExpirationDate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

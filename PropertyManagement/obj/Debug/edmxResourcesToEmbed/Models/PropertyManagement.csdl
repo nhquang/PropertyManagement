@@ -1,48 +1,48 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="PropsDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+<Schema Namespace="PropManagementDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityType Name="Problem">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Name" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
     <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="FixingPrice" Type="Int32" Nullable="false" />
     <Property Name="FixingDate" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="ReusingDate" Type="DateTime" Nullable="false" Precision="0" />
-    <Property Name="FixingPrice" Type="Int32" Nullable="false" />
     <Property Name="PropID" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="Property" Relationship="Self.FK_Prop_ToProperties" FromRole="Problems" ToRole="Properties" />
+    <NavigationProperty Name="Property" Relationship="Self.FK_Prop_ToProb" FromRole="Problem" ToRole="Property" />
   </EntityType>
   <EntityType Name="Property">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" />
-    <Property Name="Name" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
     <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="Price" Type="Int32" Nullable="false" />
-    <Property Name="Expiration" Type="DateTime" Precision="0" />
-    <NavigationProperty Name="Problems" Relationship="Self.FK_Prop_ToProperties" FromRole="Properties" ToRole="Problems" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="ExpirationDate" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Problems" Relationship="Self.FK_Prop_ToProb" FromRole="Property" ToRole="Problem" />
   </EntityType>
-  <Association Name="FK_Prop_ToProperties">
-    <End Role="Properties" Type="Self.Property" Multiplicity="1" />
-    <End Role="Problems" Type="Self.Problem" Multiplicity="*" />
+  <Association Name="FK_Prop_ToProb">
+    <End Role="Property" Type="Self.Property" Multiplicity="1" />
+    <End Role="Problem" Type="Self.Problem" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Properties">
+      <Principal Role="Property">
         <PropertyRef Name="Id" />
       </Principal>
-      <Dependent Role="Problems">
+      <Dependent Role="Problem">
         <PropertyRef Name="PropID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="PropertyManagementDB" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="PropManagementDBEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Problems" EntityType="Self.Problem" />
     <EntitySet Name="Properties" EntityType="Self.Property" />
-    <AssociationSet Name="FK_Prop_ToProperties" Association="Self.FK_Prop_ToProperties">
-      <End Role="Properties" EntitySet="Properties" />
-      <End Role="Problems" EntitySet="Problems" />
+    <AssociationSet Name="FK_Prop_ToProb" Association="Self.FK_Prop_ToProb">
+      <End Role="Property" EntitySet="Properties" />
+      <End Role="Problem" EntitySet="Problems" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

@@ -17,9 +17,9 @@ namespace PropertyManagement.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
+        public int FixingPrice { get; set; }
         public System.DateTime FixingDate { get; set; }
         public System.DateTime ReusingDate { get; set; }
-        public int FixingPrice { get; set; }
         public int PropID { get; set; }
     
         public virtual Property Property { get; set; }
