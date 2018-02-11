@@ -11,14 +11,27 @@ namespace PropertyManagement.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class Problem
+
     {
+        [Key]
         public int Id { get; set; }
+        [Required(ErrorMessage = "Name is required")]
+        [StringLength(20)]
+        [RegularExpression(@"^[a-zA-Z0-9\s]*$", ErrorMessage = "Contains letters, digits only")]
+        [Display(Name = "Problem's Name")]
         public string Name { get; set; }
         public string Description { get; set; }
+        [Required(ErrorMessage = "Price is required")]
+        [Range(1,10000)]
         public int FixingPrice { get; set; }
+        [Required(ErrorMessage = "Fixing Date is required")]
+        [Display(Name = "Fixing Date")]
         public System.DateTime FixingDate { get; set; }
+        [Required(ErrorMessage = "Reusing Date is required")]
+        [Display(Name = "Reusing Date")]
         public System.DateTime ReusingDate { get; set; }
         public int PropID { get; set; }
     

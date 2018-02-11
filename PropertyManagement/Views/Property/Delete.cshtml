@@ -48,7 +48,7 @@
         </dt>
 
         @if (Model.ExpirationDate.HasValue)
-        {
+         {
         <dd>
             @Html.DisplayFor(model => model.ExpirationDate.Value.Month)/@Html.DisplayFor(model => model.ExpirationDate.Value.Day)/@Html.DisplayFor(model => model.ExpirationDate.Value.Year)
         </dd>
@@ -58,7 +58,7 @@
         <dd>
             Still In Use
         </dd>
-        }
+}
 
     </dl>
 

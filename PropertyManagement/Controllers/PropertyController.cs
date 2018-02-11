@@ -49,17 +49,33 @@ namespace PropertyManagement.Controllers
         // GET: Property/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            return View(dBEntities.Properties.Include(c => c.Problems).SingleOrDefault(t => t.Id ==  id));
         }
 
         // POST: Property/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(int id, Property property)
         {
             try
             {
                 // TODO: Add update logic here
-                
+                if (!ModelState.IsValid)
+                {
+
+                    return RedirectToAction("edit", new { id = property.Id });
+                }
+
+                if (id != property.Id)
+                {
+
+                    return RedirectToAction("index");
+                }
+                var o = dBEntities.Properties.Include(c => c.Problems).SingleOrDefault(t => t.Id == id);
+                o.Name = property.Name;
+                o.Price = property.Price;
+                o.Date = property.Date;
+                o.ExpirationDate = property.ExpirationDate;
+                dBEntities.SaveChanges();
                 return RedirectToAction("Index");
             }
             catch
@@ -82,6 +98,7 @@ namespace PropertyManagement.Controllers
             {
                 // TODO: Add delete logic here
                 Property remove = dBEntities.Properties.Include(c => c.Problems).SingleOrDefault(t => t.Id == id);
+                
                 dBEntities.Properties.Remove(remove);
                 dBEntities.SaveChanges();
                 return RedirectToAction("Index");

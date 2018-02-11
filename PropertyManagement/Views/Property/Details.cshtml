@@ -57,10 +57,31 @@
             Still In Use
         </dd>
         }
-
+        <dt>
+            @Html.DisplayNameFor(model => model.Problems)
+        </dt>
+        @if (Model.Problems.Count > 0)
+        {
+        <dd>
+            @foreach (var item in Model.Problems)
+            {
+                @item.Name<br />
+            }
+        </dd>
+        }
+        else
+        {
+            <dd>None</dd>
+        }
     </dl>
+    
 </div>
+
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @if (Model.Problems.Count == 0)
+    {
+    @Html.ActionLink("Delete", "Delete", new { id = Model.Id }) <span>|</span>
+    }
     @Html.ActionLink("Back to List", "Index")
 </p>
