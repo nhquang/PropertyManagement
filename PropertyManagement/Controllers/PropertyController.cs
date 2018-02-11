@@ -31,12 +31,13 @@ namespace PropertyManagement.Controllers
 
         // POST: Property/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(Property property)
         {
             try
             {
                 // TODO: Add insert logic here
-
+                dBEntities.Properties.Add(property);
+                dBEntities.SaveChanges();
                 return RedirectToAction("Index");
             }
             catch
@@ -58,7 +59,7 @@ namespace PropertyManagement.Controllers
             try
             {
                 // TODO: Add update logic here
-
+                
                 return RedirectToAction("Index");
             }
             catch
@@ -70,7 +71,7 @@ namespace PropertyManagement.Controllers
         // GET: Property/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            return View(dBEntities.Properties.Include(c => c.Problems).SingleOrDefault(t => t.Id == id));
         }
 
         // POST: Property/Delete/5
@@ -80,7 +81,9 @@ namespace PropertyManagement.Controllers
             try
             {
                 // TODO: Add delete logic here
-
+                Property remove = dBEntities.Properties.Include(c => c.Problems).SingleOrDefault(t => t.Id == id);
+                dBEntities.Properties.Remove(remove);
+                dBEntities.SaveChanges();
                 return RedirectToAction("Index");
             }
             catch

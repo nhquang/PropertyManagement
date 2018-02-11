@@ -11,6 +11,7 @@ namespace PropertyManagement.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class Property
     {
@@ -19,11 +20,21 @@ namespace PropertyManagement.Models
         {
             this.Problems = new HashSet<Problem>();
         }
-    
+        [Key]
         public int Id { get; set; }
+        [Required(ErrorMessage = "Name is required")]
+        [StringLength(20)]
+        [RegularExpression(@"^[a-zA-Z0-9\s]*$", ErrorMessage ="Contains letters, digits only")]
+        [Display(Name ="Property's Name")]
+        
         public string Name { get; set; }
+
         public string Description { get; set; }
+        [Required(ErrorMessage = "Price is required")]
+        [Range(1,100000)]
         public int Price { get; set; }
+        [Required(ErrorMessage = "Acquiring Date is required")]
+        
         public System.DateTime Date { get; set; }
         public Nullable<System.DateTime> ExpirationDate { get; set; }
     
