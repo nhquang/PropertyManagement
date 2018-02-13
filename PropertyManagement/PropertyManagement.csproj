@@ -311,6 +311,7 @@
     <Content Include="Views\Property\Delete.cshtml" />
     <Content Include="Views\Property\Create.cshtml" />
     <Content Include="Views\Property\Edit.cshtml" />
+    <Content Include="Views\Problem\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

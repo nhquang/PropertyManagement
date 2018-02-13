@@ -26,17 +26,20 @@ namespace PropertyManagement.Controllers
         // GET: Problem/Create
         public ActionResult Create()
         {
+            ViewBag.list = dBEntities.Properties.ToList();
+
             return View();
         }
 
         // POST: Problem/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(Problem problem)
         {
             try
             {
                 // TODO: Add insert logic here
-
+                dBEntities.Problems.Add(problem);
+                dBEntities.SaveChanges();
                 return RedirectToAction("Index");
             }
             catch
@@ -48,16 +51,22 @@ namespace PropertyManagement.Controllers
         // GET: Problem/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            return View(dBEntities.Problems.Include(c => c.Property).SingleOrDefault(t => t.Id == id));
         }
 
         // POST: Problem/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(int id, Problem problem)
         {
             try
             {
                 // TODO: Add update logic here
+                var o = dBEntities.Problems.Include(c => c.Property).SingleOrDefault(t => t.Id == id);
+                o.Name = problem.Name;
+                o.Description = problem.Description;
+                o.FixingDate = problem.FixingDate;
+                o.FixingPrice = problem.FixingPrice;
+                o.ReusingDate = problem.ReusingDate;
 
                 return RedirectToAction("Index");
             }
