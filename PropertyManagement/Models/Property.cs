@@ -36,7 +36,7 @@ namespace PropertyManagement.Models
         public int Price { get; set; }
         [Required(ErrorMessage = "Acquiring Date is required")]
         [Display(Name = "Acquiring Date")]
-
+        
         public System.DateTime Date { get; set; }
         public Nullable<System.DateTime> ExpirationDate { get; set; }
     

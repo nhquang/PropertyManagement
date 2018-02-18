@@ -104,7 +104,7 @@ namespace PropertyManagement.Controllers
         // GET: Problem/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            return View(dBEntities.Problems.Include(c => c.Property).SingleOrDefault(t => t.Id == id));
         }
 
         // POST: Problem/Delete/5
@@ -114,7 +114,9 @@ namespace PropertyManagement.Controllers
             try
             {
                 // TODO: Add delete logic here
-
+                var o = dBEntities.Problems.Include(c => c.Property).SingleOrDefault(t => t.Id == id);
+                dBEntities.Problems.Remove(o);
+                dBEntities.SaveChanges();
                 return RedirectToAction("Index");
             }
             catch

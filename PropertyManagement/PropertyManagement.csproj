@@ -313,6 +313,7 @@
     <Content Include="Views\Property\Edit.cshtml" />
     <Content Include="Views\Problem\Create.cshtml" />
     <Content Include="Views\Problem\Edit.cshtml" />
+    <Content Include="Views\Problem\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
