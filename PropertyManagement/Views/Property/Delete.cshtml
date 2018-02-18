@@ -47,27 +47,50 @@
             @Html.DisplayNameFor(model => model.ExpirationDate)
         </dt>
 
-        @if (Model.ExpirationDate.HasValue)
-         {
-        <dd>
-            @Html.DisplayFor(model => model.ExpirationDate.Value.Month)/@Html.DisplayFor(model => model.ExpirationDate.Value.Day)/@Html.DisplayFor(model => model.ExpirationDate.Value.Year)
+        @if (!ViewBag.stillInUse)
+        {
+            <dd>
+                @Html.DisplayFor(model => model.ExpirationDate.Value.Month)/@Html.DisplayFor(model => model.ExpirationDate.Value.Day)/@Html.DisplayFor(model => model.ExpirationDate.Value.Year)
+            </dd>
+        }
+        else
+        {
+            <dd>
+                Still in use
+            </dd>
+        }
+        <dt>
+            @Html.DisplayNameFor(model => model.Problems)
+        </dt>
+        @if (Model.Problems.Count > 0)
+        {
+            <dd>
+                @foreach (var item in Model.Problems)
+                {
+                    @item.Name<br />
+                }
         </dd>
         }
         else
         {
-        <dd>
-            Still In Use
-        </dd>
-}
-
+            <dd>None</dd>
+        }
     </dl>
 
     @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
+            <input type="submit" value="Delete" class="btn btn-default" onclick="return doSubmit();" /> |
             @Html.ActionLink("Back to List", "Index")
         </div>
     }
 </div>
+<script>
+    function doSubmit() {
+        if (window.confirm("All related problems will be deleted?")) {
+            return true;
+        }
+        return false;
+    }
+</script>

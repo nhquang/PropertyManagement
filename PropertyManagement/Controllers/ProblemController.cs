@@ -38,7 +38,15 @@ namespace PropertyManagement.Controllers
             try
             {
                 // TODO: Add insert logic here
-                dBEntities.Problems.Add(problem);
+                Problem temp = new Problem();
+                temp.Name = problem.Name;
+                temp.PropID = problem.PropID;
+                temp.Description = problem.Description;
+                temp.FixingDate = problem.FixingDate;
+                temp.FixingPrice = problem.FixingPrice;
+                temp.ReusingDate = problem.ReusingDate;
+                temp.Property = dBEntities.Properties.Include(c => c.Problems).SingleOrDefault(t => t.Id == problem.PropID);
+                dBEntities.Problems.Add(temp);
                 dBEntities.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -51,6 +59,7 @@ namespace PropertyManagement.Controllers
         // GET: Problem/Edit/5
         public ActionResult Edit(int id)
         {
+            ViewBag.list = dBEntities.Properties.ToList();
             return View(dBEntities.Problems.Include(c => c.Property).SingleOrDefault(t => t.Id == id));
         }
 
@@ -60,13 +69,29 @@ namespace PropertyManagement.Controllers
         {
             try
             {
+                if (!ModelState.IsValid)
+                {
+
+                    return RedirectToAction("edit", new { id = problem.Id });
+                }
+
+                if (id != problem.Id)
+                {
+
+                    return RedirectToAction("index");
+                }
                 // TODO: Add update logic here
-                var o = dBEntities.Problems.Include(c => c.Property).SingleOrDefault(t => t.Id == id);
+                Problem o = dBEntities.Problems.Include(c => c.Property).SingleOrDefault(t => t.Id == id);
+                
                 o.Name = problem.Name;
                 o.Description = problem.Description;
                 o.FixingDate = problem.FixingDate;
-                o.FixingPrice = problem.FixingPrice;
                 o.ReusingDate = problem.ReusingDate;
+                o.FixingPrice = problem.FixingPrice;
+                o.PropID = problem.PropID;
+                o.Property = dBEntities.Properties.Include(c => c.Problems).SingleOrDefault(t => t.Id == problem.PropID);
+                dBEntities.SaveChanges();
+
 
                 return RedirectToAction("Index");
             }

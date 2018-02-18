@@ -19,6 +19,7 @@ namespace PropertyManagement.Models
         public Property()
         {
             this.Problems = new HashSet<Problem>();
+            
         }
         [Key]
         public int Id { get; set; }

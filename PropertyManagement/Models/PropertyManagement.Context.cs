@@ -27,5 +27,6 @@ namespace PropertyManagement.Models
     
         public virtual DbSet<Problem> Problems { get; set; }
         public virtual DbSet<Property> Properties { get; set; }
+        
     }
 }

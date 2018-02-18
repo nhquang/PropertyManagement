@@ -79,9 +79,8 @@
 
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @if (Model.Problems.Count == 0)
-    {
+    
     @Html.ActionLink("Delete", "Delete", new { id = Model.Id }) <span>|</span>
-    }
+    
     @Html.ActionLink("Back to List", "Index")
 </p>

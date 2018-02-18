@@ -87,6 +87,14 @@ namespace PropertyManagement.Controllers
         // GET: Property/Delete/5
         public ActionResult Delete(int id)
         {
+            if(dBEntities.Properties.Include(c => c.Problems).SingleOrDefault(t => t.Id == id).ExpirationDate == null)
+            {
+                ViewBag.stillInUse = true;
+            }
+            else
+            {
+                ViewBag.stillInUse = false;
+            }
             return View(dBEntities.Properties.Include(c => c.Problems).SingleOrDefault(t => t.Id == id));
         }
 
@@ -97,9 +105,17 @@ namespace PropertyManagement.Controllers
             try
             {
                 // TODO: Add delete logic here
-                Property remove = dBEntities.Properties.Include(c => c.Problems).SingleOrDefault(t => t.Id == id);
+                Property removedProperty = dBEntities.Properties.Include(c => c.Problems).SingleOrDefault(t => t.Id == id);
                 
-                dBEntities.Properties.Remove(remove);
+                if (removedProperty.Problems.Count > 0)
+                {
+                    
+                    var x = dBEntities.Problems.Where(c => c.PropID == id);
+                    dBEntities.Problems.RemoveRange(x);
+                    dBEntities.SaveChanges();
+
+                }
+                dBEntities.Properties.Remove(removedProperty);
                 dBEntities.SaveChanges();
                 return RedirectToAction("Index");
             }
