@@ -12,19 +12,19 @@ namespace PropertyManagement.Models
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    
-    public partial class Problem
 
+    public partial class Problem
     {
         [Key]
         public int Id { get; set; }
-        [Required(ErrorMessage = "Name is required")]
-        [StringLength(20)]
+        [Display(Name ="Problem's Name")]
+        [Required(ErrorMessage ="Name is required")]
         [RegularExpression(@"^[a-zA-Z0-9\s]*$", ErrorMessage = "Contains letters, digits only")]
-        [Display(Name = "Problem's Name")]
+        [StringLength(20)]
         public string Name { get; set; }
         public string Description { get; set; }
-        [Required(ErrorMessage = "Price is required")]
+        [Display(Name = "Fixing Price")]
+        [Required(ErrorMessage =" Price is required")]
         [Range(1,10000)]
         public int FixingPrice { get; set; }
         [Required(ErrorMessage = "Fixing Date is required")]

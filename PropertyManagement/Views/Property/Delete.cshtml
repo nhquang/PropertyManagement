@@ -6,7 +6,7 @@
 
 <h2>Delete</h2>
 
-<h3>Are you sure you want to delete @Html.DisplayFor(model => model.Name)?</h3>
+<h3>Are you sure you want to delete this?</h3>
 <div>
     <h4>Property</h4>
     <hr />
@@ -49,26 +49,26 @@
 
         @if (!ViewBag.stillInUse)
         {
-            <dd>
-                @Html.DisplayFor(model => model.ExpirationDate.Value.Month)/@Html.DisplayFor(model => model.ExpirationDate.Value.Day)/@Html.DisplayFor(model => model.ExpirationDate.Value.Year)
-            </dd>
+        <dd>
+            @Html.DisplayFor(model => model.ExpirationDate.Value.Month)/@Html.DisplayFor(model => model.ExpirationDate.Value.Day)/@Html.DisplayFor(model => model.ExpirationDate.Value.Year)
+        </dd>
         }
         else
         {
-            <dd>
-                Still in use
-            </dd>
+        <dd>
+            Still in use
+        </dd>
         }
         <dt>
             @Html.DisplayNameFor(model => model.Problems)
         </dt>
         @if (Model.Problems.Count > 0)
         {
-            <dd>
-                @foreach (var item in Model.Problems)
-                {
-                    @item.Name<br />
-                }
+        <dd>
+            @foreach (var item in Model.Problems)
+            {
+                @item.Name<br />
+            }
         </dd>
         }
         else
@@ -81,7 +81,7 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" onclick="return doSubmit();" /> |
+            <input type="submit" value="Delete" class="btn btn-default" onclick="return doSubmit();"/> |
             @Html.ActionLink("Back to List", "Index")
         </div>
     }

@@ -12,6 +12,7 @@ namespace PropertyManagement.Models
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+
     
     public partial class Property
     {
@@ -19,27 +20,25 @@ namespace PropertyManagement.Models
         public Property()
         {
             this.Problems = new HashSet<Problem>();
-            
         }
         [Key]
         public int Id { get; set; }
-        [Required(ErrorMessage = "Name is required")]
-        [StringLength(20)]
-        [RegularExpression(@"^[a-zA-Z0-9\s]*$", ErrorMessage ="Contains letters, digits only")]
         [Display(Name ="Property's Name")]
-        
+        [Required(ErrorMessage ="Name is required")]
+        [RegularExpression(@"^[a-zA-Z0-9\s]*$", ErrorMessage ="Contains letters, digits only")]
         public string Name { get; set; }
-
         public string Description { get; set; }
-        [Required(ErrorMessage = "Price is required")]
+        [Required(ErrorMessage ="Price is required")]
         [Range(1,100000)]
         public int Price { get; set; }
         [Required(ErrorMessage = "Acquiring Date is required")]
         [Display(Name = "Acquiring Date")]
-        
         public System.DateTime Date { get; set; }
+        [Display(Name = "Expiration Date")]
         public Nullable<System.DateTime> ExpirationDate { get; set; }
+        public string UserId { get; set; }
     
+        public virtual AspNetUser AspNetUser { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Problem> Problems { get; set; }
     }

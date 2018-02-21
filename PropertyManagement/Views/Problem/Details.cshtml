@@ -4,7 +4,7 @@
     ViewBag.Title = "Details";
 }
 
-<h2>@Html.DisplayFor(model => model.Name)</h2>
+<h2>@Model.Name</h2>
 
 <div>
     <h4>Problem</h4>
@@ -31,7 +31,7 @@
         </dt>
 
         <dd>
-            $@Html.DisplayFor(model => model.FixingPrice)
+            @Html.DisplayFor(model => model.FixingPrice)
         </dd>
 
         <dt>

@@ -9,7 +9,7 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{1EE3522E-1B4F-4D74-A695-46E31D0C0094}</ProjectGuid>
+    <ProjectGuid>{D0CBBF4F-05A8-4C54-BC59-8DF5BA1BD421}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -200,6 +200,18 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AspNetRole.cs">
+      <DependentUpon>PropertyManagement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUser.cs">
+      <DependentUpon>PropertyManagement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUserClaim.cs">
+      <DependentUpon>PropertyManagement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUserLogin.cs">
+      <DependentUpon>PropertyManagement.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Problem.cs">
@@ -270,7 +282,9 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -306,14 +320,12 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Property\Index.cshtml" />
     <Content Include="Views\Property\Details.cshtml" />
-    <Content Include="Views\Problem\Index.cshtml" />
-    <Content Include="Views\Problem\Details.cshtml" />
-    <Content Include="Views\Property\Delete.cshtml" />
     <Content Include="Views\Property\Create.cshtml" />
     <Content Include="Views\Property\Edit.cshtml" />
+    <Content Include="Views\Property\Delete.cshtml" />
+    <Content Include="Views\Problem\Index.cshtml" />
+    <Content Include="Views\Problem\Details.cshtml" />
     <Content Include="Views\Problem\Create.cshtml" />
-    <Content Include="Views\Problem\Edit.cshtml" />
-    <Content Include="Views\Problem\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -348,9 +360,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>55071</DevelopmentServerPort>
+          <DevelopmentServerPort>55280</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:55071/</IISUrl>
+          <IISUrl>http://localhost:55280/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

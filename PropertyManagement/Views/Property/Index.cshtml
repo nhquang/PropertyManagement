@@ -19,9 +19,9 @@
             @Html.DisplayNameFor(model => model.Price)
         </th>
         <th>
-            Acquiring Date
+            @Html.DisplayNameFor(model => model.Date)
         </th>
-        
+       
         <th></th>
     </tr>
 
@@ -37,11 +37,9 @@
         <td>
             @Html.DisplayFor(modelItem => item.Date.Month)/@Html.DisplayFor(modelItem => item.Date.Day)/@Html.DisplayFor(modelItem => item.Date.Year)
         </td>
-        
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
             @Html.ActionLink("Details", "Details", new { id=item.Id })
-            
         </td>
     </tr>
 }
