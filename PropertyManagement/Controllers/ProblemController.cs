@@ -87,9 +87,13 @@ namespace PropertyManagement.Controllers
                 dBEntities.Problems.Add(temp);
                 dBEntities.SaveChanges();
                 return RedirectToAction("Index");
+                
             }
             catch
             {
+                ViewBag.error = "Reusing Date must be larger than Fixing Date";
+                var currOwner = User.Identity.GetUserId();
+                ViewBag.list = dBEntities.Properties.Where(c => c.UserId == currOwner).ToList();
                 return View();
             }
         }
@@ -130,6 +134,9 @@ namespace PropertyManagement.Controllers
             }
             catch
             {
+                ViewBag.error = "Reusing Date must be larger than Fixing Date";
+                var currOwner = User.Identity.GetUserId();
+                ViewBag.list = dBEntities.Properties.Where(c => c.UserId == currOwner).ToList();
                 return View();
             }
         }

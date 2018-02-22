@@ -75,6 +75,7 @@ namespace PropertyManagement.Controllers
             }
             catch
             {
+                ViewBag.error = "Expiration Date must be larger than Acquiring Date";
                 return View();
             }
         }
@@ -119,6 +120,7 @@ namespace PropertyManagement.Controllers
             }
             catch
             {
+                ViewBag.error = "Expiration Date must be larger than Acquiring Date";
                 return View();
             }
         }

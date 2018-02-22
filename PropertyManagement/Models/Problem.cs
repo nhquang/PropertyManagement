@@ -34,7 +34,7 @@ namespace PropertyManagement.Models
         [Display(Name = "Reusing Date")]
         public System.DateTime ReusingDate { get; set; }
         public int PropID { get; set; }
-    
+        [Display(Name ="Property Involved")]
         public virtual Property Property { get; set; }
     }
 }

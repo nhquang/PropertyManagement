@@ -4,25 +4,25 @@
 
 <div class="jumbotron">
     <h1>Property Management</h1>
-    <p class="lead">Property Management is a web application which helps users maintain properties around their house.</p>
+    <p class="lead">Property Management is a web application which helps you maintain properties around your house.</p>
+    <div>Instructions:<br />
+    <span>+ Create properties that you possess.</span><br />
+    <span>+ Create problems (something needs to be fixed or replaced) that occur with your properties.</span>
+    </div>
     
 </div>
 
-<!--<div class="row">
+<div class="row">
     @if (!User.Identity.IsAuthenticated)
     {
     <div class="col-md-2 col-md-offset-5">
-        <div style="display:block; background-color:aquamarine;">@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</div>
+        @Html.ActionLink("Register", "Register", "Account", null, htmlAttributes: new { @class="btn btn-primary btn-lg" })
     </div>
     }
     else
     {
-    <div class="col-md-2">
-        @Html.ActionLink("Properties", "Index", "Property")
-    </div>
-    <div class="col-md-2">
-        @Html.ActionLink("Problems", "Index", "Problem")
-    </div>
-           
+        
+    
+          
     }
-    </div>-->
+    </div>
