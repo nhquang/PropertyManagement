@@ -20,7 +20,7 @@ namespace PropertyManagement.Models
         [Display(Name ="Problem's Name")]
         [Required(ErrorMessage ="Name is required")]
         [RegularExpression(@"^[a-zA-Z0-9\s]*$", ErrorMessage = "Contains letters, digits only")]
-        [StringLength(20)]
+        [StringLength(30)]
         public string Name { get; set; }
         public string Description { get; set; }
         [Display(Name = "Fixing Price")]

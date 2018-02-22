@@ -59,6 +59,7 @@ namespace PropertyManagement.Controllers
             {
                 var currOwner = User.Identity.GetUserId();
                 ViewBag.list = dBEntities.Properties.Where(c => c.UserId == currOwner).ToList();
+                
                 return View();
             }
             else
