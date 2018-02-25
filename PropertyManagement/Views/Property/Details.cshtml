@@ -62,12 +62,12 @@
         </dt>
         @if (Model.Problems.Count > 0)
         {
-            <dd>
-                @foreach (var item in Model.Problems)
-                {
-                    @item.Name<br />
-                }
-            </dd>
+        <dd>
+            @foreach (var item in Model.Problems)
+            {
+                @item.Name <span>|</span> @Html.ActionLink("Details", "Details", "Problem",new { id = item.Id },null) <br />
+            }
+        </dd>
         }
         else
         {

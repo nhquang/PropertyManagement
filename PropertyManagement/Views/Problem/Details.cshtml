@@ -55,7 +55,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Property.Name)
+            @Html.DisplayFor(model => model.Property.Name) <span>|</span> @Html.ActionLink("Details", "Details", "Property", new { id = Model.Property.Id }, null)
         </dd>
 
     </dl>
