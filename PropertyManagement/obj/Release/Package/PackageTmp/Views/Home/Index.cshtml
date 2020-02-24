@@ -1,0 +1,28 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>Property Management</h1>
+    <p class="lead">Property Management is a web application which helps you maintain properties around your house.</p>
+    <div>Instructions:<br />
+    <span>+ Create properties that you possess.</span><br />
+    <span>+ Create problems (something needs to be fixed or replaced) that occur with your properties.</span>
+    </div>
+    
+</div>
+
+<div class="row">
+    @if (!User.Identity.IsAuthenticated)
+    {
+    <div class="col-md-2 col-md-offset-5">
+        @Html.ActionLink("Register", "Register", "Account", null, htmlAttributes: new { @class="btn btn-primary btn-lg" })
+    </div>
+    }
+    else
+    {
+        
+    
+          
+    }
+    </div>

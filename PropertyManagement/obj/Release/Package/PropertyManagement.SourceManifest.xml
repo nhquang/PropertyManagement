@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<sitemanifest>
+  <DbDacFx path="F:\Git Repos\PropertyManagement\PropertyManagement\obj\Release\AutoScripts\PropManagementDBEntities_IncrementalSchemaOnly.dacpac" dacpacAction="Deploy" />
+  <IisApp path="F:\Git Repos\PropertyManagement\PropertyManagement\obj\Release\Package\PackageTmp" />
+  <setAcl path="F:\Git Repos\PropertyManagement\PropertyManagement\obj\Release\Package\PackageTmp" setAclResourceType="Directory" />
+  <setAcl path="F:\Git Repos\PropertyManagement\PropertyManagement\obj\Release\Package\PackageTmp" setAclUser="anonymousAuthenticationUser" setAclResourceType="Directory" />
+  <setAcl path="F:\Git Repos\PropertyManagement\PropertyManagement\obj\Release\Package\PackageTmp\App_Data" setAclResourceType="Directory" setAclAccess="Write" />
+</sitemanifest>

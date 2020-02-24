@@ -296,6 +296,7 @@
       <DependentUpon>PropertyManagement.edmx</DependentUpon>
     </Content>
     <None Include="Properties\PublishProfiles\PropertyManagement20180222064722 - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\PropertyManagementApp - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\PropertyManagementApp - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />

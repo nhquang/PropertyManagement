@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="PropertyManagementApp" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^F:\\Git\ Repos\\PropertyManagement\\PropertyManagement\\obj\\Release\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^F:\\Git\ Repos\\PropertyManagement\\PropertyManagement\\obj\\Release\\Package\\PackageTmp$" />
+  </parameter>
+  <parameter name="Add write permission to App_Data Folder" description="Add write permission to App_Data folder" value="PropertyManagementApp/App_Data" tags="Hidden">
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^F:\\Git\ Repos\\PropertyManagement\\PropertyManagement\\obj\\Release\\Package\\PackageTmp\\App_Data$" />
+  </parameter>
+  <parameter name="PropManagementDBEntities-Web.config Connection String" description="" value="metadata=res://*/Models.PropertyManagement.csdl|res://*/Models.PropertyManagement.ssdl|res://*/Models.PropertyManagement.msl;provider=System.Data.SqlClient;provider connection string=&quot;server=tcp:propmanagementdb-server.database.windows.net,1433;initial catalog=PropertyManagementDB;persist security info=False;user id=nhquang;password=Thachotao96@;multipleactiveresultsets=False;encrypt=True;trustservercertificate=False;connection timeout=30;App=EntityFramework&quot;" tags="">
+    <parameterEntry kind="XmlFile" scope="F:\\Git\ Repos\\PropertyManagement\\PropertyManagement\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='PropManagementDBEntities']/@connectionString" />
+  </parameter>
+</parameters>

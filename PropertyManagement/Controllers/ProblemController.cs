@@ -28,6 +28,7 @@ namespace PropertyManagement.Controllers
                         probs.Add(item2);
                     }
                 }
+               
                 return View(probs);
             }
             else
